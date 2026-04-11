@@ -34,4 +34,4 @@ To run this project locally, simply follow these steps:
    Open your browser and navigate to the localhost port provided in your terminal (usually `http://localhost:5173`).
 
 ## Deployment Link
-- **Live Demo:** [Insert your deployment link here, e.g., Vercel, Netlify, or similar]
+- **Live Demo:** streamyn.vercel.app
