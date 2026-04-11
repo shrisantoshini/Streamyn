@@ -1,7 +1,8 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import EventCard from "../components/EventCard";
 import SkeletonCard from "../components/SkeletonCard";
 import { events, categories } from "../data/events";
+import heroImg from "../assets/hero.png";
 
 export default function Home() {
   const [search, setSearch] = useState("");
@@ -20,8 +21,8 @@ export default function Home() {
       activeCategory === "All"
         ? true
         : activeCategory === "Trending"
-        ? e.likes > 2000
-        : e.category === activeCategory;
+          ? e.likes > 2000
+          : e.category === activeCategory;
     return matchSearch && matchCat;
   });
 
@@ -71,15 +72,15 @@ export default function Home() {
 
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold leading-tight mb-4 tracking-tight">
             {"Stream the Moments ".split("").map((char, index) => (
-              <span 
-                key={index} 
-                className="inline-block" 
-                style={{ 
+              <span
+                key={index}
+                className="inline-block"
+                style={{
                   animationName: 'fadeSlideRight',
                   animationDuration: '0.4s',
                   animationTimingFunction: 'ease-out',
                   animationFillMode: 'both',
-                  animationDelay: `${index * 0.04}s` 
+                  animationDelay: `${index * 0.04}s`
                 }}
               >
                 {char === " " ? "\u00A0" : char}
@@ -87,15 +88,15 @@ export default function Home() {
             ))}
             <span className="whitespace-nowrap">
               {"That Matter".split("").map((char, index) => (
-                <span 
-                  key={index} 
-                  className="inline-block bg-gradient-to-r from-violet-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent pb-1" 
-                  style={{ 
+                <span
+                  key={index}
+                  className="inline-block bg-gradient-to-r from-violet-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent pb-1"
+                  style={{
                     animationName: 'fadeSlideRight',
                     animationDuration: '0.4s',
                     animationTimingFunction: 'ease-out',
                     animationFillMode: 'both',
-                    animationDelay: `${("Stream the Moments ".length + index) * 0.04}s` 
+                    animationDelay: `${("Stream the Moments ".length + index) * 0.04}s`
                   }}
                 >
                   {char === " " ? "\u00A0" : char}
@@ -165,12 +166,12 @@ export default function Home() {
           {topLiveStreams.map((event, i) => (
             <div key={event.id} className="flex flex-row items-center gap-3 sm:gap-4">
               {/* Giant Number Properly Spaced */}
-              <div 
+              <div
                 className="text-[6rem] sm:text-[7.5rem] font-black leading-none select-none tracking-tighter shrink-0 text-transparent [-webkit-text-stroke:3px_#8b5cf6] dark:[-webkit-text-stroke:2px_rgba(167,139,250,0.8)]"
               >
                 {i + 1}
               </div>
-              
+
               {/* Card Container Beside String */}
               <div className="w-full flex-1 min-w-0">
                 <EventCard event={event} index={i} compact={true} />
@@ -190,11 +191,10 @@ export default function Home() {
             <button
               key={cat}
               onClick={() => setActiveCategory(cat)}
-              className={`px-4 py-2 rounded-xl text-sm font-medium border transition-all duration-200 ${
-                activeCategory === cat
-                  ? "bg-gradient-to-r from-violet-600 to-cyan-600 text-slate-900 dark:text-white border-transparent shadow-lg shadow-violet-900/30"
-                  : "bg-white dark:bg-gray-900 text-slate-600 dark:text-gray-400 border-slate-200 dark:border-white/5 hover:border-slate-300 dark:border-white/20 hover:text-slate-900 dark:text-white"
-              }`}
+              className={`px-4 py-2 rounded-xl text-sm font-medium border transition-all duration-200 ${activeCategory === cat
+                ? "bg-gradient-to-r from-violet-600 to-cyan-600 text-slate-900 dark:text-white border-transparent shadow-lg shadow-violet-900/30"
+                : "bg-white dark:bg-gray-900 text-slate-600 dark:text-gray-400 border-slate-200 dark:border-white/5 hover:border-slate-300 dark:border-white/20 hover:text-slate-900 dark:text-white"
+                }`}
             >
               {cat === "Trending" && "🔥 "}
               {cat}
